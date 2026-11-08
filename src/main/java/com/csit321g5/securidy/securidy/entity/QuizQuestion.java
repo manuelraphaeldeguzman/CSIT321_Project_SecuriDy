@@ -41,8 +41,8 @@ public class QuizQuestion {
     public void setQuestionText(String questionText) { this.questionText = questionText; }
     public String getOption() { return option; }
     public void setOption(String option) { this.option = option; }
-    public String getCorrectAnswer() { return correctAnswers; }
-    public void setCorrectAnswer(String correctAnswer) { this.correctAnswers = correctAnswer; }
+    public String getCorrectAnswers() { return correctAnswers; }
+    public void setCorrectAnswers(String correctAnswer) { this.correctAnswers = correctAnswer; }
     public String getQuestionType() { return questionType; }
     public void setQuestionType(String questionType) { this.questionType = questionType; }
     public Integer getPoints() { return points; }

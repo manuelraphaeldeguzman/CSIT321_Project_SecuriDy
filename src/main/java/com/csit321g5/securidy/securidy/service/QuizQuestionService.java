@@ -40,7 +40,7 @@ public class QuizQuestionService {
         if (updatedQuestionDetails.getQuizId() != null) existingQuestion.setQuizId(updatedQuestionDetails.getQuizId());
         if (updatedQuestionDetails.getQuestionText() != null) existingQuestion.setQuestionText(updatedQuestionDetails.getQuestionText());
         if (updatedQuestionDetails.getOption() != null) existingQuestion.setOption(updatedQuestionDetails.getOption());
-        if (updatedQuestionDetails.getCorrectAnswer() != null) existingQuestion.setCorrectAnswer(updatedQuestionDetails.getCorrectAnswer());
+        if (updatedQuestionDetails.getCorrectAnswers() != null) existingQuestion.setCorrectAnswers(updatedQuestionDetails.getCorrectAnswers());
         if (updatedQuestionDetails.getQuestionType() != null) existingQuestion.setQuestionType(updatedQuestionDetails.getQuestionType());
         if (updatedQuestionDetails.getPoints() != null) existingQuestion.setPoints(updatedQuestionDetails.getPoints());
         if (updatedQuestionDetails.getOrderNo() != null) existingQuestion.setOrderNo(updatedQuestionDetails.getOrderNo());

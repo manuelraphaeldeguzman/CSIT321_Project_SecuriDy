@@ -12,7 +12,7 @@ public class Quiz {
 
     @Column(nullable = false)
     private String chapterId;
-
+    
     @Column(nullable = false)
     private String quizType;
 

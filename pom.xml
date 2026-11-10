@@ -8,8 +8,8 @@
 		<version>4.1.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.csit321g5.securidy</groupId>
-	<artifactId>securidy</artifactId>
+	<groupId>com.csit321g5.RayMan_Bolts</groupId>
+	<artifactId>Securidy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>securidy</name>
 	<description/>

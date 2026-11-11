@@ -3,14 +3,13 @@ package com.csit321g5.securidy.securidy.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
-import java.util.UUID;
-
 @Entity
 @Table(name = "users")
 public class User {
     @Id
-    @Column(name = "user_id", nullable = false, updatable = false)
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
+    private Long userId;
 
     @Column(nullable = false)
     private String firstName;
@@ -32,12 +31,13 @@ public class User {
 
     @PrePersist
     protected void onCreate() {
-        if (userId == null || userId.isBlank()) userId = UUID.randomUUID().toString();
-        if (createdAt == null || createdAt.isBlank()) createdAt = java.time.LocalDateTime.now().toString();
+        if (createdAt == null || createdAt.isBlank()) {
+            createdAt = java.time.LocalDateTime.now().toString();
+        }
     }
 
-    public String getUserId() { return userId; }
-    public void setUserId(String userId) { this.userId = userId; }
+    public Long getUserId() { return userId; }
+    public void setUserId(Long userId) { this.userId = userId; }
     public String getFirstName() { return firstName; }
     public void setFirstName(String firstName) { this.firstName = firstName; }
     public String getLastName() { return lastName; }

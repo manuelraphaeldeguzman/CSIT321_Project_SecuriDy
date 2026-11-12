@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface LessonQuestionRepository
-        extends JpaRepository<LessonQuestion, String> {
+        extends JpaRepository<LessonQuestion, Long> {
 
-    List<LessonQuestion> findByLessonIdOrderByOrderNoAsc(String lessonId);
+    List<LessonQuestion> findByLessonIdOrderByOrderNoAsc(Long lessonId);
 }

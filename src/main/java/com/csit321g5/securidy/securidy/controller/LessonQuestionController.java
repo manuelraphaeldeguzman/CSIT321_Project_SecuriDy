@@ -24,13 +24,13 @@ public class LessonQuestionController {
     }
 
     @GetMapping("/{id}")
-    public LessonQuestion getById(@PathVariable String id) {
+    public LessonQuestion getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
     @GetMapping("/lesson/{lessonId}")
     public List<LessonQuestion> getByLessonId(
-            @PathVariable String lessonId) {
+            @PathVariable Long lessonId) {
         return service.getByLessonId(lessonId);
     }
 
@@ -42,14 +42,14 @@ public class LessonQuestionController {
 
     @PutMapping("/{id}")
     public LessonQuestion update(
-            @PathVariable String id,
+            @PathVariable Long id,
             @RequestBody LessonQuestion entity) {
         return service.update(id, entity);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable String id) {
+    public void delete(@PathVariable Long id) {
         service.delete(id);
     }
 }

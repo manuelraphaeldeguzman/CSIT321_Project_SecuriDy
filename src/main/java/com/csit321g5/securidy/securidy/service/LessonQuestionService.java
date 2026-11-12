@@ -26,7 +26,7 @@ public class LessonQuestionService {
         return repository.findAll();
     }
 
-    public List<LessonQuestion> getByLessonId(String lessonId) {
+    public List<LessonQuestion> getByLessonId(Long lessonId) {
         if (!lessonRepository.existsById(lessonId)) {
             throw new ResourceNotFoundException("Lesson not found: " + lessonId);
         }
@@ -34,13 +34,13 @@ public class LessonQuestionService {
         return repository.findByLessonIdOrderByOrderNoAsc(lessonId);
     }
 
-    public LessonQuestion getById(String id) {
+    public LessonQuestion getById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Lesson question not found: " + id));
     }
 
-    private void validateLesson(String lessonId) {
+    private void validateLesson(Long lessonId) {
         if (lessonId == null || !lessonRepository.existsById(lessonId)) {
             throw new BadRequestException(
                     "lessonId must reference an existing lesson.");
@@ -53,7 +53,7 @@ public class LessonQuestionService {
         return repository.save(question);
     }
 
-    public LessonQuestion update(String id, LessonQuestion input) {
+    public LessonQuestion update(Long id, LessonQuestion input) {
         LessonQuestion existing = getById(id);
         validateLesson(input.getLessonId());
 
@@ -68,7 +68,7 @@ public class LessonQuestionService {
         return repository.save(existing);
     }
 
-    public void delete(String id) {
+    public void delete(Long id) {
         repository.delete(getById(id));
     }
 }

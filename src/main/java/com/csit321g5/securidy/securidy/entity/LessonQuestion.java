@@ -1,18 +1,18 @@
 package com.csit321g5.securidy.securidy.entity;
 
 import jakarta.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "lesson_questions")
 public class LessonQuestion {
 
     @Id
-    @Column(name = "question_id", nullable = false, updatable = false)
-    private String questionId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "question_id")
+    private Long questionId;
 
     @Column(nullable = false)
-    private String lessonId;
+    private Long lessonId;
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String questionText;
@@ -31,27 +31,20 @@ public class LessonQuestion {
 
     @Column(nullable = false)
     private Integer orderNo;
-
-    @PrePersist
-    protected void onCreate() {
-        if (questionId == null || questionId.isBlank()) {
-            questionId = UUID.randomUUID().toString();
-        }
-    }
-
-    public String getQuestionId() {
+    
+    public Long getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(String questionId) {
+    public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
 
-    public String getLessonId() {
+    public Long getLessonId() {
         return lessonId;
     }
 
-    public void setLessonId(String lessonId) {
+    public void setLessonId(Long lessonId) {
         this.lessonId = lessonId;
     }
 

@@ -36,7 +36,7 @@ public class ChaptersTakenService {
                         "Chapter taken not found: " + id));
     }
 
-    private void validateUser(String userId) {
+    private void validateUser(Long userId) {
         if (userId == null || !userRepository.existsById(userId)) {
             throw new BadRequestException(
                     "userId must reference an existing user.");

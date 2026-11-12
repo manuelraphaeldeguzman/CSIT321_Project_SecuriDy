@@ -25,7 +25,7 @@ public class EnrollmentService {
 
     public List<Enrollment> getAll() { return repository.findAll(); }
 
-    public Enrollment getById(String id) {
+    public Enrollment getById(Long id) {
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Enrollment not found: " + id));
     }
 
@@ -43,7 +43,7 @@ public class EnrollmentService {
         return repository.save(enrollment);
     }
 
-    public Enrollment update(String id, Enrollment input) {
+    public Enrollment update(Long id, Enrollment input) {
         Enrollment existing = getById(id);
         validateReferences(input);
         existing.setUserId(input.getUserId());
@@ -52,5 +52,5 @@ public class EnrollmentService {
         return repository.save(existing);
     }
 
-    public void delete(String id) { repository.delete(getById(id)); }
+    public void delete(Long id) { repository.delete(getById(id)); }
 }

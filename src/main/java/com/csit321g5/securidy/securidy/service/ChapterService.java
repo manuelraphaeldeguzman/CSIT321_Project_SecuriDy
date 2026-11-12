@@ -33,7 +33,6 @@ public class ChapterService {
     public Chapter create(Chapter chapter) {
         validateCourse(chapter.getCourseId());
         chapter.setChapterId(null);
-        chapter.setCreatedAt(null);
         return repository.save(chapter);
     }
 

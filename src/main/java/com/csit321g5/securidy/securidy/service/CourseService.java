@@ -23,7 +23,6 @@ public class CourseService {
 
     public Course create(Course course) {
         course.setCourseId(null);
-        course.setCreatedAt(null);
         return repository.save(course);
     }
 

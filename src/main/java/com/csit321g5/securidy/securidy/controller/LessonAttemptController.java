@@ -24,7 +24,7 @@ public class LessonAttemptController {
     }
 
     @GetMapping("/{id}")
-    public LessonAttempt getById(@PathVariable String id) {
+    public LessonAttempt getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
@@ -36,14 +36,14 @@ public class LessonAttemptController {
 
     @PutMapping("/{id}")
     public LessonAttempt update(
-            @PathVariable String id,
+            @PathVariable Long id,
             @RequestBody LessonAttempt entity) {
         return service.update(id, entity);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable String id) {
+    public void delete(@PathVariable Long id) {
         service.delete(id);
     }
 }

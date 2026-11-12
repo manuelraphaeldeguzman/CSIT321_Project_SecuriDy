@@ -1,21 +1,21 @@
 package com.csit321g5.securidy.securidy.entity;
 
 import jakarta.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "lesson_attempts")
 public class LessonAttempt {
 
     @Id
-    @Column(name = "attempt_id", nullable = false, updatable = false)
-    private String attemptId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "attempt_id")
+    private Long attemptId;
 
     @Column(nullable = false)
-    private String lessonId;
+    private Long lessonId;
 
     @Column(nullable = false)
-    private String userId;
+    private Long userId;
 
     private Float score;
 
@@ -23,34 +23,27 @@ public class LessonAttempt {
 
     private String completedAt;
 
-    @PrePersist
-    protected void onCreate() {
-        if (attemptId == null || attemptId.isBlank()) {
-            attemptId = UUID.randomUUID().toString();
-        }
-    }
-
-    public String getAttemptId() {
+    public Long getAttemptId() {
         return attemptId;
     }
 
-    public void setAttemptId(String attemptId) {
+    public void setAttemptId(Long attemptId) {
         this.attemptId = attemptId;
     }
 
-    public String getLessonId() {
+    public Long getLessonId() {
         return lessonId;
     }
 
-    public void setLessonId(String lessonId) {
+    public void setLessonId(Long lessonId) {
         this.lessonId = lessonId;
     }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

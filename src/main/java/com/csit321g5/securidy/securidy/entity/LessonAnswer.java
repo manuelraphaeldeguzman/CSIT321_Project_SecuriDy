@@ -1,21 +1,21 @@
 package com.csit321g5.securidy.securidy.entity;
 
 import jakarta.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "lesson_answers")
 public class LessonAnswer {
 
     @Id
-    @Column(name = "answer_id", nullable = false, updatable = false)
-    private String answerId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "answer_id")
+    private Long answerId;
 
     @Column(nullable = false)
-    private String attemptId;
+    private Long attemptId;
 
     @Column(nullable = false)
-    private String questionId;
+    private Long questionId;
 
     @Column(columnDefinition = "TEXT")
     private String selectedAnswer;
@@ -24,34 +24,27 @@ public class LessonAnswer {
 
     private Integer points;
 
-    @PrePersist
-    protected void onCreate() {
-        if (answerId == null || answerId.isBlank()) {
-            answerId = UUID.randomUUID().toString();
-        }
-    }
-
-    public String getAnswerId() {
+    public Long getAnswerId() {
         return answerId;
     }
 
-    public void setAnswerId(String answerId) {
+    public void setAnswerId(Long answerId) {
         this.answerId = answerId;
     }
 
-    public String getAttemptId() {
+    public Long getAttemptId() {
         return attemptId;
     }
 
-    public void setAttemptId(String attemptId) {
+    public void setAttemptId(Long attemptId) {
         this.attemptId = attemptId;
     }
 
-    public String getQuestionId() {
+    public Long getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(String questionId) {
+    public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
 

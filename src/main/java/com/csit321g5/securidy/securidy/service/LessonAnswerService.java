@@ -32,18 +32,18 @@ public class LessonAnswerService {
         return repository.findAll();
     }
 
-    public LessonAnswer getById(String id) {
+    public LessonAnswer getById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Lesson answer not found: " + id));
     }
 
-    private void validateReferences(String attemptId, String questionId) {
-        if (attemptId == null || attemptId.isBlank()) {
+    private void validateReferences(Long attemptId, Long questionId) {
+        if (attemptId == null) {
             throw new BadRequestException("attemptId is required.");
         }
 
-        if (questionId == null || questionId.isBlank()) {
+        if (questionId == null) {
             throw new BadRequestException("questionId is required.");
         }
 
@@ -67,7 +67,7 @@ public class LessonAnswerService {
         return repository.save(answer);
     }
 
-    public LessonAnswer update(String id, LessonAnswer input) {
+    public LessonAnswer update(Long id, LessonAnswer input) {
         LessonAnswer existing = getById(id);
 
         validateReferences(input.getAttemptId(), input.getQuestionId());
@@ -81,7 +81,7 @@ public class LessonAnswerService {
         return repository.save(existing);
     }
 
-    public void delete(String id) {
+    public void delete(Long id) {
         repository.delete(getById(id));
     }
 }

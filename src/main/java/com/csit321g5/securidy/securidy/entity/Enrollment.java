@@ -20,13 +20,6 @@ public class Enrollment {
     private String status;
     private String createdAt;
 
-    @PrePersist
-    protected void onCreate() {
-        if (createdAt == null || createdAt.isBlank()) {
-            createdAt = java.time.LocalDateTime.now().toString();
-        }
-    }
-
     public Long getEnrollmentId() { return enrollmentId; }
     public void setEnrollmentId(Long enrollmentId) { this.enrollmentId = enrollmentId; }
     public Long getUserId() { return userId; }

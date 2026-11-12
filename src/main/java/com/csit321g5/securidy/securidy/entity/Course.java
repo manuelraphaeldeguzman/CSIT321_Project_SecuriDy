@@ -20,13 +20,6 @@ public class Course {
     private String createdBy;
     private String createdAt;
 
-    @PrePersist
-    protected void onCreate() {
-        if (createdAt == null || createdAt.isBlank()) {
-            createdAt = java.time.LocalDateTime.now().toString();
-        }
-    }
-
     public Long getCourseId() { return courseId; }
     public void setCourseId(Long courseId) { this.courseId = courseId; }
     public String getCourseName() { return courseName; }
@@ -37,6 +30,4 @@ public class Course {
     public void setSubject(String subject) { this.subject = subject; }
     public String getCreatedBy() { return createdBy; }
     public void setCreatedBy(String createdBy) { this.createdBy = createdBy; }
-    public String getCreatedAt() { return createdAt; }
-    public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
 }

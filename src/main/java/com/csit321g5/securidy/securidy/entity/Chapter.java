@@ -24,13 +24,6 @@ public class Chapter {
 
     private String createdAt;
 
-    @PrePersist
-    protected void onCreate() {
-        if (createdAt == null || createdAt.isBlank()) {
-            createdAt = java.time.LocalDateTime.now().toString();
-        }
-    }
-
     public Long getChapterId() { return chapterId; }
     public void setChapterId(Long chapterId) { this.chapterId = chapterId; }
     public Long getCourseId() { return courseId; }
@@ -41,6 +34,4 @@ public class Chapter {
     public void setDescription(String description) { this.description = description; }
     public Integer getOrderNo() { return orderNo; }
     public void setOrderNo(Integer orderNo) { this.orderNo = orderNo; }
-    public String getCreatedAt() { return createdAt; }
-    public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
 }

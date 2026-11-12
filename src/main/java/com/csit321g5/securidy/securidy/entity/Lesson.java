@@ -12,7 +12,7 @@ public class Lesson {
     private String lessonId;
 
     @Column(nullable = false)
-    private String chapterId;
+    private Long chapterId;
 
     @Column(nullable = false)
     private String title;
@@ -44,11 +44,11 @@ public class Lesson {
         this.lessonId = lessonId;
     }
 
-    public String getChapterId() {
+    public Long getChapterId() {
         return chapterId;
     }
 
-    public void setChapterId(String chapterId) {
+    public void setChapterId(Long chapterId) {
         this.chapterId = chapterId;
     }
 

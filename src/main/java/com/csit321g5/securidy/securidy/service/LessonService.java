@@ -29,8 +29,9 @@ public class LessonService {
                 .orElseThrow(() -> new ResourceNotFoundException("Lesson not found: " + id));
     }
 
-    private void validateChapter(String chapterId) {
-        if (chapterId == null || !chapterRepository.existsById(chapterId)) {
+    
+    private void validateChapter(Long chapterId) {
+        if (chapterId == null || !chapterRepository.existsByChapterId(chapterId)) {
             throw new BadRequestException("chapterId must reference an existing chapter.");
         }
     }

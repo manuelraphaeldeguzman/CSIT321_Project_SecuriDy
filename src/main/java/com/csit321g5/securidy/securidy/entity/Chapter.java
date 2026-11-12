@@ -1,17 +1,17 @@
 package com.csit321g5.securidy.securidy.entity;
 
 import jakarta.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "chapters")
 public class Chapter {
     @Id
-    @Column(name = "chapter_id", nullable = false, updatable = false)
-    private String chapterId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "chapter_id")
+    private Long chapterId;
 
     @Column(nullable = false)
-    private String courseId;
+    private Long courseId;
 
     @Column(nullable = false)
     private String title;
@@ -26,14 +26,15 @@ public class Chapter {
 
     @PrePersist
     protected void onCreate() {
-        if (chapterId == null || chapterId.isBlank()) chapterId = UUID.randomUUID().toString();
-        if (createdAt == null || createdAt.isBlank()) createdAt = java.time.LocalDateTime.now().toString();
+        if (createdAt == null || createdAt.isBlank()) {
+            createdAt = java.time.LocalDateTime.now().toString();
+        }
     }
 
-    public String getChapterId() { return chapterId; }
-    public void setChapterId(String chapterId) { this.chapterId = chapterId; }
-    public String getCourseId() { return courseId; }
-    public void setCourseId(String courseId) { this.courseId = courseId; }
+    public Long getChapterId() { return chapterId; }
+    public void setChapterId(Long chapterId) { this.chapterId = chapterId; }
+    public Long getCourseId() { return courseId; }
+    public void setCourseId(Long courseId) { this.courseId = courseId; }
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
     public String getDescription() { return description; }

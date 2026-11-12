@@ -21,11 +21,11 @@ public class ChapterService {
 
     public List<Chapter> getAll() { return repository.findAll(); }
 
-    public Chapter getById(String id) {
+    public Chapter getById(Long id) {
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Chapter not found: " + id));
     }
 
-    private void validateCourse(String courseId) {
+    private void validateCourse(Long courseId) {
         if (courseId == null || !courseRepository.existsById(courseId))
             throw new BadRequestException("courseId must reference an existing course.");
     }
@@ -37,7 +37,7 @@ public class ChapterService {
         return repository.save(chapter);
     }
 
-    public Chapter update(String id, Chapter input) {
+    public Chapter update(Long id, Chapter input) {
         Chapter existing = getById(id);
         validateCourse(input.getCourseId());
         existing.setCourseId(input.getCourseId());
@@ -47,5 +47,5 @@ public class ChapterService {
         return repository.save(existing);
     }
 
-    public void delete(String id) { repository.delete(getById(id)); }
+    public void delete(Long id) { repository.delete(getById(id)); }
 }

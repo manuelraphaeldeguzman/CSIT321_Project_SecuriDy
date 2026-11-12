@@ -19,18 +19,18 @@ public class ChapterController {
     public List<Chapter> getAll() { return service.getAll(); }
 
     @GetMapping("/{id}")
-    public Chapter getById(@PathVariable String id) { return service.getById(id); }
+    public Chapter getById(@PathVariable Long id) { return service.getById(id); }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Chapter create(@RequestBody Chapter entity) { return service.create(entity); }
 
     @PutMapping("/{id}")
-    public Chapter update(@PathVariable String id, @RequestBody Chapter entity) {
+    public Chapter update(@PathVariable Long id, @RequestBody Chapter entity) {
         return service.update(id, entity);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable String id) { service.delete(id); }
+    public void delete(@PathVariable Long id) { service.delete(id); }
 }

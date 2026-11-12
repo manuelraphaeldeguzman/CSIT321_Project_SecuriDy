@@ -16,7 +16,7 @@ public class UserService {
 
     public List<User> getAll() { return repository.findAll(); }
 
-    public User getById(String id) {
+    public User getById(Long id) {
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found: " + id));
     }
 
@@ -33,7 +33,7 @@ public class UserService {
         return repository.save(user);
     }
 
-    public User update(String id, User input) {
+    public User update(Long id, User input) {
         User existing = getById(id);
         if (input.getEmail() != null && !input.getEmail().equals(existing.getEmail())
                 && repository.existsByEmail(input.getEmail())) {
@@ -47,5 +47,5 @@ public class UserService {
         return repository.save(existing);
     }
 
-    public void delete(String id) { repository.delete(getById(id)); }
+    public void delete(Long id) { repository.delete(getById(id)); }
 }

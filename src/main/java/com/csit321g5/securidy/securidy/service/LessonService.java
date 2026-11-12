@@ -24,12 +24,12 @@ public class LessonService {
         return repository.findAll();
     }
 
-    public Lesson getById(String id) {
+    public Lesson getById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Lesson not found: " + id));
     }
 
-    private void validateChapter(String chapterId) {
+    private void validateChapter(Long chapterId) {
         if (chapterId == null || !chapterRepository.existsById(chapterId)) {
             throw new BadRequestException("chapterId must reference an existing chapter.");
         }
@@ -38,11 +38,10 @@ public class LessonService {
     public Lesson create(Lesson lesson) {
         validateChapter(lesson.getChapterId());
         lesson.setLessonId(null);
-        lesson.setCreatedAt(null);
         return repository.save(lesson);
     }
 
-    public Lesson update(String id, Lesson input) {
+    public Lesson update(Long id, Lesson input) {
         Lesson existing = getById(id);
         validateChapter(input.getChapterId());
 
@@ -54,7 +53,7 @@ public class LessonService {
         return repository.save(existing);
     }
 
-    public void delete(String id) {
+    public void delete(Long id) {
         repository.delete(getById(id));
     }
 }

@@ -1,18 +1,18 @@
 package com.csit321g5.securidy.securidy.entity;
 
 import jakarta.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "lessons")
 public class Lesson {
 
     @Id
-    @Column(name = "lesson_id", nullable = false, updatable = false)
-    private String lessonId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "lesson_id")
+    private Long lessonId;
 
     @Column(nullable = false)
-    private String chapterId;
+    private Long chapterId;
 
     @Column(nullable = false)
     private String title;
@@ -23,32 +23,19 @@ public class Lesson {
     @Column(nullable = false)
     private Integer orderNo;
 
-    private String createdAt;
-
-    @PrePersist
-    protected void onCreate() {
-        if (lessonId == null || lessonId.isBlank()) {
-            lessonId = UUID.randomUUID().toString();
-        }
-
-        if (createdAt == null || createdAt.isBlank()) {
-            createdAt = java.time.LocalDateTime.now().toString();
-        }
-    }
-
-    public String getLessonId() {
+    public Long getLessonId() {
         return lessonId;
     }
 
-    public void setLessonId(String lessonId) {
+    public void setLessonId(Long lessonId) {
         this.lessonId = lessonId;
     }
 
-    public String getChapterId() {
+    public Long getChapterId() {
         return chapterId;
     }
 
-    public void setChapterId(String chapterId) {
+    public void setChapterId(Long chapterId) {
         this.chapterId = chapterId;
     }
 
@@ -76,11 +63,4 @@ public class Lesson {
         this.orderNo = orderNo;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
 }

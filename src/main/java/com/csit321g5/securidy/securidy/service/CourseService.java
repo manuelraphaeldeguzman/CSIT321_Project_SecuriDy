@@ -17,7 +17,7 @@ public class CourseService {
 
     public List<Course> getAll() { return repository.findAll(); }
 
-    public Course getById(String id) {
+    public Course getById(Long id) {
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Course not found: " + id));
     }
 
@@ -27,7 +27,7 @@ public class CourseService {
         return repository.save(course);
     }
 
-    public Course update(String id, Course input) {
+    public Course update(Long id, Course input) {
         Course existing = getById(id);
         existing.setCourseName(input.getCourseName());
         existing.setDescription(input.getDescription());
@@ -36,5 +36,5 @@ public class CourseService {
         return repository.save(existing);
     }
 
-    public void delete(String id) { repository.delete(getById(id)); }
+    public void delete(Long id) { repository.delete(getById(id)); }
 }

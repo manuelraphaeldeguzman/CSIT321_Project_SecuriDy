@@ -1,14 +1,14 @@
 package com.csit321g5.securidy.securidy.entity;
 
 import jakarta.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name = "courses")
 public class Course {
     @Id
-    @Column(name = "course_id", nullable = false, updatable = false)
-    private String courseId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "course_id")
+    private Long courseId;
 
     @Column(nullable = false)
     private String courseName;
@@ -22,12 +22,13 @@ public class Course {
 
     @PrePersist
     protected void onCreate() {
-        if (courseId == null || courseId.isBlank()) courseId = UUID.randomUUID().toString();
-        if (createdAt == null || createdAt.isBlank()) createdAt = java.time.LocalDateTime.now().toString();
+        if (createdAt == null || createdAt.isBlank()) {
+            createdAt = java.time.LocalDateTime.now().toString();
+        }
     }
 
-    public String getCourseId() { return courseId; }
-    public void setCourseId(String courseId) { this.courseId = courseId; }
+    public Long getCourseId() { return courseId; }
+    public void setCourseId(Long courseId) { this.courseId = courseId; }
     public String getCourseName() { return courseName; }
     public void setCourseName(String courseName) { this.courseName = courseName; }
     public String getDescription() { return description; }

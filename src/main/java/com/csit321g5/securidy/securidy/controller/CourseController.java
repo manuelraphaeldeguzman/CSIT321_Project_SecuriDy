@@ -19,18 +19,18 @@ public class CourseController {
     public List<Course> getAll() { return service.getAll(); }
 
     @GetMapping("/{id}")
-    public Course getById(@PathVariable String id) { return service.getById(id); }
+    public Course getById(@PathVariable Long id) { return service.getById(id); }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Course create(@RequestBody Course entity) { return service.create(entity); }
 
     @PutMapping("/{id}")
-    public Course update(@PathVariable String id, @RequestBody Course entity) {
+    public Course update(@PathVariable Long id, @RequestBody Course entity) {
         return service.update(id, entity);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable String id) { service.delete(id); }
+    public void delete(@PathVariable Long id) { service.delete(id); }
 }
